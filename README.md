@@ -1,7 +1,3 @@
-# React APP을 플라스크 서버 위에 호스팅하기.
-
-* yarn build 한 index.html 파일을 그대로 flask 에서 리턴하게 했더니 안되어서 시작한 테스트.
-
 ```sh
 yarn global add create-react-app react-scripts
 create-react-app react-app
@@ -9,7 +5,6 @@ create-react-app react-app
 
 ```
 .
-├── README.md  
 ├── README.md  
 └── flask-server/  
     └──static/  
@@ -119,18 +114,15 @@ webpack.config.js 수정
 
 `python3 main.py`
 
-그리구
 
 `yarn build`
-
-짜잔 !
 
 ![1](./images/flask.png)
 
 
 ## react build 된 앱 flask 에 올리시고 싶다면..
 
-`git clone https://github.com/kimsehwan96/react-with-flask.git`
+`git clone https://github.com/xanqus/react-with-flask`
 
 `cd react-with-flask`
 
@@ -141,5 +133,3 @@ webpack.config.js 수정
 `cd react-app`
 
 `npm install`
-
-개발 시작~
