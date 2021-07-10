@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import ArticleItem from "./ArticleItem";
+import PostItem from "./PostItem";
 import Button from "../common/Button";
 
-const WriteArticleButtonWrapper = styled.div`
+const WritePostButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-bottom: 3rem;
 `;
 
-const ArticleListBlock = styled.div`
+const PostListBlock = styled.div`
   box-sizing: border-box;
   padding-bottom: 3rem;
   width: 768px;
@@ -23,46 +23,46 @@ const ArticleListBlock = styled.div`
   }
 `;
 
-const ArticleList = () => {
-  const [articles, setArticles] = useState([]);
-  const loading = useRef(null);
+const PostList = () => {
+  const [posts, setPosts] = useState([]);
+  const loading = useRef(false);
   useEffect(() => {
     const getData = async () => {
       loading.current = true;
       //let form = new FormData();
 
       try {
-        const data = await axios.post("/getArticles");
+        const data = await axios.post("/getPosts");
 
-        console.log(data.data);
-        setArticles(data.data);
+        //console.log(data.data);
+        setPosts(data.data);
       } catch (e) {
         console.log(e);
       }
-      loading.current = false;
     };
     getData();
+    loading.current = false;
   }, []);
 
-  if (!loading.current) {
-    return <ArticleListBlock>loading...</ArticleListBlock>;
+  if (loading.current) {
+    return <PostListBlock>loading...</PostListBlock>;
   }
 
-  if (!articles) {
+  if (!posts) {
     return null;
   }
   return (
-    <ArticleListBlock>
-      <WriteArticleButtonWrapper>
+    <PostListBlock>
+      <WritePostButtonWrapper>
         <Button cyan to="/write">
           새 글 작성하기
         </Button>
-      </WriteArticleButtonWrapper>
-      {articles.map((article) => (
-        <ArticleItem key={article.id} article={article} />
+      </WritePostButtonWrapper>
+      {posts.map((post) => (
+        <PostItem key={post.id} post={post} />
       ))}
-    </ArticleListBlock>
+    </PostListBlock>
   );
 };
 
-export default ArticleList;
+export default PostList;

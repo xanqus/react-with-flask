@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import SubInfo from "../common/SubInfo";
-import palette from "./../../lib/styles/palette";
+import palette from "../../lib/styles/palette";
 
 const ArticleItemBlock = styled.div`
   padding-top: 3rem;
@@ -30,8 +30,8 @@ const ArticleItemBlock = styled.div`
   }
 `;
 
-const ArticleItem = ({ article }) => {
-  const { id, regDate, title, body, hitCount } = article;
+const ArticleItem = ({ post }) => {
+  const { id, regDate, title, body, hitCount } = post;
 
   return (
     <ArticleItemBlock>

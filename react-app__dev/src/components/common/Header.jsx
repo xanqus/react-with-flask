@@ -30,7 +30,7 @@ const Spacer = styled.div`
   height: 4rem;
 `;
 
-const Header = ({ user, onLogout }) => {
+const Header = () => {
   return (
     <>
       <HeaderBlock>

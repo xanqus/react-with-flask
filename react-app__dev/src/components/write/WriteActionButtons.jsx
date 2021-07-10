@@ -23,23 +23,23 @@ const WriteActionButtons = ({ history, title, body }) => {
   let form = new FormData();
   form.append("title", title);
   form.append("body", body);
-  const sendArticleToFlask = () => {
+  const sendPostToFlask = () => {
     const sendData = async () => {
-      const data = await axios.post("/addArticle", form);
+      const data = await axios.post("/addPost", form);
       console.log(data);
       history.push("/");
     };
     sendData();
   };
 
-  const cancelAddArticle = () => {
+  const cancelAddPost = () => {
     history.goBack();
   };
 
   return (
     <WriteActionButtonsBlock>
-      <StyledButton onClick={sendArticleToFlask}>포스트 등록</StyledButton>
-      <StyledButton onClick={cancelAddArticle}>취소</StyledButton>
+      <StyledButton onClick={sendPostToFlask}>포스트 등록</StyledButton>
+      <StyledButton onClick={cancelAddPost}>취소</StyledButton>
     </WriteActionButtonsBlock>
   );
 };

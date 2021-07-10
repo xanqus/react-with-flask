@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "../components/common/Header";
-import ArticleViewer from "../components/article/ArticleViewer";
+import PostViewer from "../components/post/PostViewer";
+import CommentList from "../components/comment/CommentList";
+import CommentWriter from "../components/comment/CommentWriter";
 
 const PostPage = ({ match }) => {
   const postId = match.params.postId;
@@ -8,7 +10,10 @@ const PostPage = ({ match }) => {
   return (
     <>
       <Header />
-      <ArticleViewer postId={postId} />
+      <title>게시글 - FLASK WITH REACT</title>
+      <PostViewer postId={postId} />
+      <CommentList />
+      <CommentWriter />
     </>
   );
 };
